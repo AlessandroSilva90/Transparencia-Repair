@@ -10,3 +10,8 @@ export const getDadosPorCidade = async (dt_inicio,dt_fim) =>{
     const dados = await api.get(`/${dt_inicio}/dt_fim/${dt_fim}`);   
     return dados.data;
 }
+
+export const getResumoUnidadeInternacao = async (dt_inicio,dt_fim) => {
+    const dados = await api.get(`/resumounidade/${dt_inicio}/dt_fim/${dt_fim}`);   
+    return dados.data;
+}

@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { getDadosPorCidade } from '../../services/api';
+import { getResumoUnidadeInternacao } from '../../services/api';
 import Table from 'react-bootstrap/Table';
 import Form from 'react-bootstrap/Form';
 import "./main.css"
@@ -8,8 +8,7 @@ import InputMask from 'react-input-mask';
 
 // import Menu from '../../Components/Menu/Menu.jsx';
 
-function AtendimentosPorCidade() {
-
+function ResumoUndInt() {
 
   const [dt_inicio, setdtInicio] = useState("");
   const [dt_fim, setdtFim] = useState("");
@@ -17,18 +16,25 @@ function AtendimentosPorCidade() {
   const [dados,setDados] = useState([''])
 
   const handleDados = async (e) => {
-      e.preventDefault();
-      const response = await getDadosPorCidade(dt_inicio,dt_fim)
-    console.log(response)
-    setDados(response)
+    e.preventDefault();
+    const response = await getResumoUnidadeInternacao(dt_inicio,dt_fim);
+    setDados(response);
   }
 
   const returnDados = (val , index) =>{
+    
     return(
       <tr key={index}>
         <td>{val[0]}</td>
         <td>{val[1]}</td>
         <td>{val[2]}</td>
+        <td>{val[3]}</td>
+        <td>{val[4]}</td>
+        <td>{val[5]}</td>
+        <td>{Math.round(val[6])}</td>
+        <td>{Math.round(val[7])}</td>
+        <td>{val[8]}</td>
+        <td>{val[9]}</td>
       </tr>
     )
   }
@@ -36,7 +42,7 @@ function AtendimentosPorCidade() {
   return (
     <Container>
       <div className="mainPage">
-      <h1>Atendimentos por Cidade</h1>
+      <h1>Atendimentos por Unidade de Internação</h1>
       <Form className='forms' onSubmit={handleDados}>
         <div className="titleDiv">
           <p>Pesquisa</p>
@@ -56,12 +62,23 @@ function AtendimentosPorCidade() {
         </div>
         <Table striped> 
           <thead>
-            <th>Cidade</th>
-            <th>Quantidade</th>
-            <th>Porcentagem</th>
+            <tr>
+            <th>Setor</th>
+            <th>Pacientes</th>
+            <th>Internações</th>
+            <th>Altas</th>
+            <th>Obitos</th>
+            <th>Óbitos 48h</th>
+            <th>% de Ocupação</th>
+            <th>Taxa de Mortalidade</th>
+            <th>Taxa Mort Instantanea</th>
+            <th>Pacientes/Dia</th>
+            </tr>
+            
           </thead>
           <tbody>
             {dados.map(returnDados)}
+
           </tbody>
         
         </Table>
@@ -72,4 +89,4 @@ function AtendimentosPorCidade() {
   );
 }
 
-export default AtendimentosPorCidade;
+export default ResumoUndInt;
