@@ -22,30 +22,32 @@ function MainPage() {
 
       <div className='bodyMain'>
         <div className="titleDiv">
-            Arrocha
+            
         </div>
         <div className="rowIcones">
 
           <div className="iconLink">
-            <Link to='atendimentos_cidade'>
+            <Link to='atendimentos_cidade' style={{textDecoration:" none", textDecorationLine:"none"}}>
               <img src={img} alt="" srcset="" />
-              <p>Texto</p>
+              <p>Atendimentos Por Cidade</p>
             </Link>
           </div>
 
           <div className="iconLink">
-            <Link to='/at'>
-              <img src={img} alt="" srcset="" />
-              <p>Texto</p>
+            <Link to='/at' style={{textDecoration:" none", textDecorationLine:"none"}}>
+              <img src={img} alt="" srcset=""  />
+              <p style={{textDecoration:" none", textDecorationLine:"none"}}>Situações por Unidades de Internação</p>
             </Link>
             </div>
           <div className="iconLink">
             <img src={img} alt="" srcset="" />
-            <p>Texto</p>
+            <p>Ativos de T.I</p>
           </div>
           <div className="iconLink">
+          <Link to='/cirurgias' style={{textDecoration:" none", textDecorationLine:"none"}}>
             <img src={img} alt="" srcset="" />
-            <p>Texto</p>
+            <p>Cirurgias</p>
+          </Link>
           </div>
 
         </div>

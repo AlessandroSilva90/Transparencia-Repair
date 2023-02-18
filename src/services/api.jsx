@@ -15,3 +15,23 @@ export const getResumoUnidadeInternacao = async (dt_inicio,dt_fim) => {
     const dados = await api.get(`/resumounidade/${dt_inicio}/dt_fim/${dt_fim}`);   
     return dados.data;
 }
+
+export const getCirurgiaTipo =  async (dt_inicio,dt_fim) => {
+    const dados = await api.get(`/cirurgia_tipo/${dt_inicio}/dt_fim/${dt_fim}`);   
+    return dados.data;
+}
+
+export const getCirurgiaSexo =  async (dt_inicio,dt_fim) => {
+    const dados = await api.get(`/cirurgia_sexo/${dt_inicio}/dt_fim/${dt_fim}`);   
+    return dados.data;
+}
+
+export const getCirurgiaCidade =  async (dt_inicio,dt_fim) => {
+    const dados = await api.get(`/cirurgia_cidade/${dt_inicio}/dt_fim/${dt_fim}`);   
+    return dados.data;
+}
+
+export const getCirurgiaFaixaEtaria =  async (dt_inicio,dt_fim) => {
+    const dados = await api.get(`/cirurgia_faixa_etaria/${dt_inicio}/dt_fim/${dt_fim}`);   
+    return dados.data;
+}
