@@ -24,7 +24,6 @@ function App() {
       <form onSubmit={handleDados}>
         Data Inicial<input type="text" name="" id=""onChange={(e)=> setdtInicio(e.target.value)}/><br/>
         Data FInal<input type="text"  mask='99/99/9999' name="" id="" onChange={(e)=> setdtFim(e.target.value)}/><br/>
-        
         <button>Enviar</button>
       </form>
 

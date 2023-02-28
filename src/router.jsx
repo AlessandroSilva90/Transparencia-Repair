@@ -11,10 +11,10 @@ const AppRouts = () => {
     return(
         <Router>
             <Routes>
-                 <Route exact path='/' element={<MainPage/>} />
-                 <Route exact path='/atendimentos_cidade' element={<AtendimentosPorCidade/>} />
-                 <Route exact path='/at' element={<ResumoUndInt/>} />
-                 <Route exact path='/cirurgias' element={<Cirurgias/>} /> 
+                 <Route exact path='transparencia/' element={<MainPage/>} />
+                 <Route exact path='transparencia/atendimentos_cidade' element={<AtendimentosPorCidade/>} />
+                 <Route exact path='transparencia/at' element={<ResumoUndInt/>} />
+                 <Route exact path='transparencia/cirurgias' element={<Cirurgias/>} /> 
 
             </Routes>
         </Router>

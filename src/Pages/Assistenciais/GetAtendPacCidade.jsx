@@ -26,9 +26,9 @@ function AtendimentosPorCidade() {
   const returnDados = (val , index) =>{
     return(
       <tr key={index}>
-        <td>{val[0]}</td>
-        <td>{val[1]}</td>
-        <td>{val[2]}</td>
+        <td>{val['CIDADE']}</td>
+        <td>{val['QTD']}</td>
+        <td>{val['PERC']}</td>
       </tr>
     )
   }

@@ -15,7 +15,7 @@
 .rowIcones img{
     padding-left: 50px;
     padding-right: 50px;
-    
+    width: 12em;
 }
 
 .rowIcones img:hover{

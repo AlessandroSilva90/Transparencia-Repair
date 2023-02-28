@@ -10,7 +10,11 @@ import Container from 'react-bootstrap/Container';
 import InputMask from 'react-input-mask';
 
 // Images and icons
-import img from "../../images/despesas.png"
+// import img from "../../images/despesas.png"
+import atendCid from "../../images/atendimentoporcidade.png"
+import undInt from "../../images/atendimentoporunidadedeinternacao.png"
+import ativosTi from "../../images/Ativos_de_ti.png"
+import Cirurgias from "../../images/cirurgia.png"
 
 function MainPage() {
 
@@ -27,25 +31,25 @@ function MainPage() {
         <div className="rowIcones">
 
           <div className="iconLink">
-            <Link to='atendimentos_cidade' style={{textDecoration:" none", textDecorationLine:"none"}}>
-              <img src={img} alt="" srcset="" />
+            <Link to='/transparencia/atendimentos_cidade' style={{textDecoration:" none", textDecorationLine:"none"}}>
+              <img src={atendCid} alt="" srcset="" />
               <p>Atendimentos Por Cidade</p>
             </Link>
           </div>
 
           <div className="iconLink">
-            <Link to='/at' style={{textDecoration:" none", textDecorationLine:"none"}}>
-              <img src={img} alt="" srcset=""  />
+            <Link to='/transparencia/at' style={{textDecoration:" none", textDecorationLine:"none"}}>
+              <img src={undInt} alt="" srcset=""  />
               <p style={{textDecoration:" none", textDecorationLine:"none"}}>Situações por Unidades de Internação</p>
             </Link>
             </div>
           <div className="iconLink">
-            <img src={img} alt="" srcset="" />
+            <img src={ativosTi} alt="" srcset="" />
             <p>Ativos de T.I</p>
           </div>
           <div className="iconLink">
-          <Link to='/cirurgias' style={{textDecoration:" none", textDecorationLine:"none"}}>
-            <img src={img} alt="" srcset="" />
+          <Link to='/transparencia/cirurgias' style={{textDecoration:" none", textDecorationLine:"none"}}>
+            <img src={Cirurgias} alt="" srcset="" />
             <p>Cirurgias</p>
           </Link>
           </div>

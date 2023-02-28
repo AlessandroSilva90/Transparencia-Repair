@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-
+import Loader from '../../Components/Loading/Loading';
 // API
 
 import { getCirurgiaTipo, getCirurgiaCidade, getCirurgiaFaixaEtaria, getCirurgiaSexo } from '../../services/api';
@@ -24,6 +24,9 @@ function Cirurgias() {
   const [cidade,setDadosCidade] = useState(['']);
   const [faixa_etaria,setDadosFaixaEtaria] = useState(['']);
 
+  const [isLoad,setIsLoad] = useState(false);
+
+
   const handleDados = async (e) => {
     e.preventDefault();
     const responseTipo = await getCirurgiaTipo(dt_inicio,dt_fim);
@@ -35,14 +38,15 @@ function Cirurgias() {
     setDadosCidade(responseCidade);
     setDadosFaixaEtaria(responseFaixaEtaria);
     setDadosSexo(responseSexo);
+    setIsLoad(true);
   }
 
   const returnTipo = (val , index) =>{
     
     return(
       <tr key={index}>
-        <td>{val[0]}</td>
-        <td>{val[1]}</td>
+        <td>{val['TIPO']}</td>
+        <td>{val['QTD']}</td>
         {/* <td>{val[2]}</td>
         <td>{val[3]}</td>
         <td>{val[4]}</td> */}
@@ -58,9 +62,9 @@ function Cirurgias() {
     
     return(
       <tr key={index}>
-        <td>{val[0]}</td>
-        <td>{val[1]}</td>
-        <td>{val[2]}</td>
+        <td>{val['UF']}</td>
+        <td>{val['NM_CIDADE']}</td>
+        <td>{val['QTD']}</td>
         {/* <td>{val[3]}</td>
         <td>{val[4]}</td> */}
         {/* <td>{val[5]}</td>
@@ -75,8 +79,8 @@ function Cirurgias() {
     
     return(
       <tr key={index}>
-        <td>{val[0]}</td>
-        <td>{val[1]}</td>
+        <td>{val['SEXO']}</td>
+        <td>{val['QTD']}</td>
         {/* <td>{val[2]}</td>
         <td>{val[3]}</td>
         <td>{val[4]}</td> */}
@@ -92,8 +96,8 @@ function Cirurgias() {
     
     return(
       <tr key={index}>
-        <td>{val[0]}</td>
-        <td>{val[1]}</td>
+        <td>{val['FAIXA']}</td>
+        <td>{val['QTD']}</td>
         {/* <td>{val[2]}</td>
         <td>{val[3]}</td>
         <td>{val[4]}</td>
@@ -111,7 +115,7 @@ function Cirurgias() {
       <div className="mainPage">
       <h1>Cirúrgias</h1>
 
-      <Form className='forms' onSubmit={handleDados}>
+      <Form className='forms' onSubmit={handleDados} disable ={isLoad}>
         <div className="titleDiv">
           <p>Pesquisa</p>
         </div>
@@ -131,15 +135,14 @@ function Cirurgias() {
         <Table striped> 
           <thead>
             <tr>
-            <th>Idade</th>
-            <th>Quantidade</th>
-          
+              <th>Idade</th>
+              <th>Quantidade</th>
             </tr>
             
           </thead>
           <tbody>
+            {/* { isLoad ? faixa_etaria.map(returnFaixaEtaria) : <Loader/> } */}
             {faixa_etaria.map(returnFaixaEtaria)}
-
           </tbody>
         
         </Table>
@@ -169,14 +172,15 @@ function Cirurgias() {
         <Table striped> 
           <thead>
             <tr>
-            <th>Sexo</th>
-            <th>Quantidade</th>
-          
+              <th>Sexo</th>
+              <th>Quantidade</th>
             </tr>
             
           </thead>
           <tbody>
-            {sexo.map(returnSexo)}
+            {/* {sexo?sexo : "LOAdin"} */}
+            {  sexo.map(returnSexo)}
+            
 
           </tbody>
         

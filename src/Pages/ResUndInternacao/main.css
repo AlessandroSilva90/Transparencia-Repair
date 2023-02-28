@@ -69,3 +69,13 @@
     width: 150px;
     line-height: 30px;
 }
+
+.legendas{
+    position: absolute;
+    font-size: small;
+    text-align: left;
+}
+.legTitle{
+    display: flex;
+    
+}
