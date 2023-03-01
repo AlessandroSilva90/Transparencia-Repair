@@ -1,7 +1,9 @@
 import { useEffect, useState } from 'react'
 import Loader from '../../Components/Loading/Loading';
+import Swal from 'sweetalert2'; 
+import {format} from "date-fns"
+import toDate from 'date-fns/toDate';
 // API
-
 import { getCirurgiaTipo, getCirurgiaCidade, getCirurgiaFaixaEtaria, getCirurgiaSexo } from '../../services/api';
 
 
@@ -11,6 +13,7 @@ import Form from 'react-bootstrap/Form';
 import Container from 'react-bootstrap/Container';
 import InputMask from 'react-input-mask';
 import Paginator from '../../Components/Paginator/Paginator';
+import parseISO from 'date-fns/parseISO';
 
 // import Menu from '../../Components/Menu/Menu.jsx';
 
@@ -30,12 +33,19 @@ function Cirurgias() {
   const handleDados = async (e) => {
     e.preventDefault();
 
+    if(format(parseISO( dt_inicio), "MM-yyyy") > format(parseISO( dt_fim), "MM-yyyy")){
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'Verifique se as datas estão corretas!'
+      })
+    }else{      
     try{
       setIsLoad(false)
-      const responseTipo = await getCirurgiaTipo(dt_inicio,dt_fim);
-      const responseSexo = await getCirurgiaSexo(dt_inicio,dt_fim);
-      const responseCidade = await getCirurgiaCidade(dt_inicio,dt_fim);
-      const responseFaixaEtaria = await getCirurgiaFaixaEtaria(dt_inicio,dt_fim);
+      const responseTipo = await getCirurgiaTipo(format(parseISO( dt_inicio), "dd-MM-yyyy"),format(parseISO( dt_fim), "dd-MM-yyyy"));
+      const responseSexo = await getCirurgiaSexo(format(parseISO( dt_inicio), "dd-MM-yyyy"),format(parseISO( dt_fim), "dd-MM-yyyy"));
+      const responseCidade = await getCirurgiaCidade(format(parseISO( dt_inicio), "dd-MM-yyyy"),format(parseISO( dt_fim), "dd-MM-yyyy"));
+      const responseFaixaEtaria = await getCirurgiaFaixaEtaria(format(parseISO( dt_inicio), "dd-MM-yyyy"),format(parseISO( dt_fim), "dd-MM-yyyy"));
   
       setDadosTipo(responseTipo);
       setDadosCidade(responseCidade);
@@ -45,7 +55,14 @@ function Cirurgias() {
       
     }catch (e) {
       setIsLoad(false);
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'Verifique se as datas estão corretas!'
+      })
     }
+  }
+
     setIsLoad(true);
   }
 
@@ -98,8 +115,8 @@ function Cirurgias() {
           <p>Pesquisa</p>
         </div>
         <div className="fields">
-          <InputMask mask="99-99-9999"  placeholder='Data Inicial' className='inpText' onChange={(e)=> setdtInicio(e.target.value)}/>
-          <InputMask mask="99-99-9999"  placeholder='Data Final'  className='inpText' onChange={(e)=> setdtFim(e.target.value)}/>
+          <input type={"date"}  placeholder='Data Inicial' className='inpText' onChange={(e)=> setdtInicio(e.target.value)}/>
+          <input type={"date"}  placeholder='Data Final'  className='inpText' onChange={(e)=> setdtFim(e.target.value)}/>
         </div>
         <div className="buttons">
           <button>Buscar</button>

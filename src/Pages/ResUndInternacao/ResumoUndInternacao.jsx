@@ -12,7 +12,7 @@ import toDate from 'date-fns/toDate';
 
 import Loader from '../../Components/Loading/Loading';
 import ErrorBoundary from '../../Components/ErrorBoundary/ErrorBoundary';
-import { parse } from 'date-fns/esm';
+
 import parseISO from 'date-fns/parseISO';
 function ResumoUndInt() {
 
@@ -22,7 +22,9 @@ function ResumoUndInt() {
   const [isLoad,setIsLoad] = useState(true);
 
   const handleDados = async (e) => {
+
     e.preventDefault();
+
     if(format(parseISO( dt_inicio), "MM-yyyy") > format(parseISO( dt_fim), "MM-yyyy")){
       Swal.fire({
         icon: 'error',
@@ -30,7 +32,6 @@ function ResumoUndInt() {
         text: 'Verifique se as datas estão corretas!'
       })
     }else{
-
     try{
       setIsLoad(false)
       const response = await getResumoUnidadeInternacao(format(parseISO( dt_inicio), "dd-MM-yyyy"),format(parseISO( dt_fim), "dd-MM-yyyy"));

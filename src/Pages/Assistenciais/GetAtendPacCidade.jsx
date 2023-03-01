@@ -4,10 +4,13 @@ import Table from 'react-bootstrap/Table';
 import Form from 'react-bootstrap/Form';
 import "./main.css"
 import Container from 'react-bootstrap/Container';
-import InputMask from 'react-input-mask';
+import parseISO from 'date-fns/parseISO';
+import Swal from 'sweetalert2'; 
+import {format} from "date-fns"
+import toDate from 'date-fns/toDate';
 
 import Loader from '../../Components/Loading/Loading';
-// import Menu from '../../Components/Menu/Menu.jsx';
+
 
 function AtendimentosPorCidade() {
 
@@ -15,21 +18,29 @@ function AtendimentosPorCidade() {
   const [dt_inicio, setdtInicio] = useState("");
   const [dt_fim, setdtFim] = useState("");
   const [dados,setDados] = useState(['']);
-
   const [isLoad,setIsLoad] = useState(true);
 
   const handleDados = async (e) => {
       e.preventDefault();
+
+      if(format(parseISO( dt_inicio), "MM-yyyy") > format(parseISO( dt_fim), "MM-yyyy")){
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: 'Verifique se as datas estão corretas!'
+        })
+      }else{
       try{
         setIsLoad(false)
-        const response = await getDadosPorCidade(dt_inicio,dt_fim)
+        const response = await getDadosPorCidade(format(parseISO( dt_inicio), "dd-MM-yyyy"),format(parseISO( dt_fim), "dd-MM-yyyy"))
         setDados(response)
         setIsLoad(true)
       }catch (e){
         setIsLoad(false)
       }
       setIsLoad(true)
-    // console.log(response)
+    
+      }
   }
 
   const returnDados = (val , index) =>{
@@ -51,8 +62,8 @@ function AtendimentosPorCidade() {
           <p>Pesquisa</p>
         </div>
         <div className="fields">
-          <InputMask mask="99-99-9999"  placeholder='Data Inicial' className='inpText' onChange={(e)=> setdtInicio(e.target.value)}/>
-          <InputMask mask="99-99-9999"  placeholder='Data Final'  className='inpText' onChange={(e)=> setdtFim(e.target.value)}/>
+          <input type={"date"}  placeholder='Data Inicial' className='inpText' onChange={(e)=> setdtInicio(e.target.value)}/>
+          <input type={"date"}  placeholder='Data Final'  className='inpText' onChange={(e)=> setdtFim(e.target.value)}/>
         </div>
         <div className="buttons">
           <button>Buscar</button>
