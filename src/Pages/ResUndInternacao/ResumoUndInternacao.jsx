@@ -6,6 +6,9 @@ import "./main.css"
 import Container from 'react-bootstrap/Container';
 import InputMask from 'react-input-mask';
 
+import DeleteList from '../../Components/PopUpError/Error';
+
+import Loader from '../../Components/Loading/Loading';
 // import Menu from '../../Components/Menu/Menu.jsx';
 
 function ResumoUndInt() {
@@ -14,11 +17,23 @@ function ResumoUndInt() {
   const [dt_fim, setdtFim] = useState("");
 
   const [dados,setDados] = useState([''])
+  const [isLoad,setIsLoad] = useState(true);
 
   const handleDados = async (e) => {
     e.preventDefault();
-    const response = await getResumoUnidadeInternacao(dt_inicio,dt_fim);
-    setDados(response);
+    try{
+      setIsLoad(false)
+      const response = await getResumoUnidadeInternacao(dt_inicio,dt_fim);
+      setDados(response);
+      setIsLoad(true)
+
+    }catch (e){
+      setIsLoad(true)
+      
+      // console.log('ieeeeei')
+    }
+    // alert("ieeeei")
+    setIsLoad(true)
   }
 
   const returnDados = (val , index) =>{
@@ -77,7 +92,8 @@ function ResumoUndInt() {
             
           </thead>
           <tbody>
-            {dados.map(returnDados)}
+            {isLoad ? dados.map(returnDados) : <Loader/> }
+            {/* // {dados.map(returnDados)} */}
 
           </tbody>
         

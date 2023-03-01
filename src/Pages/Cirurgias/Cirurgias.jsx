@@ -24,37 +24,38 @@ function Cirurgias() {
   const [cidade,setDadosCidade] = useState(['']);
   const [faixa_etaria,setDadosFaixaEtaria] = useState(['']);
 
-  const [isLoad,setIsLoad] = useState(false);
+  const [isLoad,setIsLoad] = useState(true);
 
 
   const handleDados = async (e) => {
     e.preventDefault();
-    const responseTipo = await getCirurgiaTipo(dt_inicio,dt_fim);
-    const responseSexo = await getCirurgiaSexo(dt_inicio,dt_fim);
-    const responseCidade = await getCirurgiaCidade(dt_inicio,dt_fim);
-    const responseFaixaEtaria = await getCirurgiaFaixaEtaria(dt_inicio,dt_fim);
-    
-    setDadosTipo(responseTipo);
-    setDadosCidade(responseCidade);
-    setDadosFaixaEtaria(responseFaixaEtaria);
-    setDadosSexo(responseSexo);
+
+    try{
+      setIsLoad(false)
+      const responseTipo = await getCirurgiaTipo(dt_inicio,dt_fim);
+      const responseSexo = await getCirurgiaSexo(dt_inicio,dt_fim);
+      const responseCidade = await getCirurgiaCidade(dt_inicio,dt_fim);
+      const responseFaixaEtaria = await getCirurgiaFaixaEtaria(dt_inicio,dt_fim);
+  
+      setDadosTipo(responseTipo);
+      setDadosCidade(responseCidade);
+      setDadosFaixaEtaria(responseFaixaEtaria);
+      setDadosSexo(responseSexo);
+      setIsLoad(true);
+      
+    }catch (e) {
+      setIsLoad(false);
+    }
     setIsLoad(true);
   }
 
+  
   const returnTipo = (val , index) =>{
     
     return(
       <tr key={index}>
         <td>{val['TIPO']}</td>
         <td>{val['QTD']}</td>
-        {/* <td>{val[2]}</td>
-        <td>{val[3]}</td>
-        <td>{val[4]}</td> */}
-        {/* <td>{val[5]}</td>
-        <td>{Math.round(val[6])}</td>
-        <td>{Math.round(val[7])}</td>
-        <td>{val[8]}</td>
-        <td>{val[9]}</td> */}
       </tr>
     )
   }
@@ -65,13 +66,6 @@ function Cirurgias() {
         <td>{val['UF']}</td>
         <td>{val['NM_CIDADE']}</td>
         <td>{val['QTD']}</td>
-        {/* <td>{val[3]}</td>
-        <td>{val[4]}</td> */}
-        {/* <td>{val[5]}</td>
-        <td>{Math.round(val[6])}</td>
-        <td>{Math.round(val[7])}</td>
-        <td>{val[8]}</td>
-        <td>{val[9]}</td> */}
       </tr>
     )
   }
@@ -81,14 +75,6 @@ function Cirurgias() {
       <tr key={index}>
         <td>{val['SEXO']}</td>
         <td>{val['QTD']}</td>
-        {/* <td>{val[2]}</td>
-        <td>{val[3]}</td>
-        <td>{val[4]}</td> */}
-        {/* <td>{val[5]}</td>
-        <td>{Math.round(val[6])}</td>
-        <td>{Math.round(val[7])}</td>
-        <td>{val[8]}</td>
-        <td>{val[9]}</td> */}
       </tr>
     )
   }
@@ -98,14 +84,6 @@ function Cirurgias() {
       <tr key={index}>
         <td>{val['FAIXA']}</td>
         <td>{val['QTD']}</td>
-        {/* <td>{val[2]}</td>
-        <td>{val[3]}</td>
-        <td>{val[4]}</td>
-        <td>{val[5]}</td>
-        <td>{Math.round(val[6])}</td>
-        <td>{Math.round(val[7])}</td>
-        <td>{val[8]}</td> */}
-        {/* <td>{val[9]}</td> */}
       </tr>
     )
   }
@@ -115,7 +93,7 @@ function Cirurgias() {
       <div className="mainPage">
       <h1>Cirúrgias</h1>
 
-      <Form className='forms' onSubmit={handleDados} disable ={isLoad}>
+      <Form className='forms' onSubmit={handleDados} >
         <div className="titleDiv">
           <p>Pesquisa</p>
         </div>
@@ -141,8 +119,8 @@ function Cirurgias() {
             
           </thead>
           <tbody>
-            {/* { isLoad ? faixa_etaria.map(returnFaixaEtaria) : <Loader/> } */}
-            {faixa_etaria.map(returnFaixaEtaria)}
+            { isLoad ? faixa_etaria.map(returnFaixaEtaria) : <Loader/> }
+            {/* {faixa_etaria.map(returnFaixaEtaria)} */}
           </tbody>
         
         </Table>
@@ -161,7 +139,8 @@ function Cirurgias() {
             </tr>
             
           </thead>          
-            <Paginator data={cidade}/>
+          { isLoad ? <Paginator data={cidade}/> : <Loader/> }
+            {/* <Paginator data={cidade}/> */}
         </Table>
       </div>
 
@@ -178,8 +157,8 @@ function Cirurgias() {
             
           </thead>
           <tbody>
-            {/* {sexo?sexo : "LOAdin"} */}
-            {  sexo.map(returnSexo)}
+          { isLoad ? sexo.map(returnSexo) : <Loader/> }
+            {/* {  sexo.map(returnSexo)} */}
             
 
           </tbody>
@@ -201,7 +180,8 @@ function Cirurgias() {
             
           </thead>
           <tbody>
-            {tipo.map(returnTipo)}
+          { isLoad ? tipo.map(returnTipo) : <Loader/> }
+            {/* {tipo.map(returnTipo)} */}
 
           </tbody>
         

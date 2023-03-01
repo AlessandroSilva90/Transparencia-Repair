@@ -6,6 +6,7 @@ import "./main.css"
 import Container from 'react-bootstrap/Container';
 import InputMask from 'react-input-mask';
 
+import Loader from '../../Components/Loading/Loading';
 // import Menu from '../../Components/Menu/Menu.jsx';
 
 function AtendimentosPorCidade() {
@@ -13,14 +14,22 @@ function AtendimentosPorCidade() {
 
   const [dt_inicio, setdtInicio] = useState("");
   const [dt_fim, setdtFim] = useState("");
+  const [dados,setDados] = useState(['']);
 
-  const [dados,setDados] = useState([''])
+  const [isLoad,setIsLoad] = useState(true);
 
   const handleDados = async (e) => {
       e.preventDefault();
-      const response = await getDadosPorCidade(dt_inicio,dt_fim)
-    console.log(response)
-    setDados(response)
+      try{
+        setIsLoad(false)
+        const response = await getDadosPorCidade(dt_inicio,dt_fim)
+        setDados(response)
+        setIsLoad(true)
+      }catch (e){
+        setIsLoad(false)
+      }
+      setIsLoad(true)
+    // console.log(response)
   }
 
   const returnDados = (val , index) =>{
@@ -61,7 +70,8 @@ function AtendimentosPorCidade() {
             <th>Porcentagem</th>
           </thead>
           <tbody>
-            {dados.map(returnDados)}
+          { isLoad ? dados.map(returnDados) : <Loader/> }
+            {/* {dados.map(returnDados)} */}
           </tbody>
         
         </Table>

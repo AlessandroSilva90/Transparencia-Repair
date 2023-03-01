@@ -11,7 +11,7 @@ function Menu() {
   return (
     <Navbar  expand="lg"  fixed="top" className='navbar'>
       <Container>
-      <a href="transparencia/">
+      <a href="/">
           <img src={img}
                   width="200"
                   className="d-inline-block align-top"

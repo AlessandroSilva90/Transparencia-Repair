@@ -52,6 +52,7 @@ export default function Paginator(props){
   return (
     <>
     <tbody>
+      
         {currentItems.map(returnCidade)}
     </tbody>
 
