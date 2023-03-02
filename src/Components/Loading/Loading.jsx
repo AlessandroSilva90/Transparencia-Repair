@@ -4,11 +4,10 @@ import "./Loading.css"
 
 const Loader = () => {
     return ( 
-        <div className="loader_container">
+        <div class="loadingio-spinner-eclipse-uayllve2zes"><div class="ldio-dbsq6cmh4q">
+<div></div>
+</div></div>
 
-            <img className="loader" src={Loading} alt="loading"  />
-        
-        </div>
      );
 }
  

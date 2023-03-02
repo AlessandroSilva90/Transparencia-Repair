@@ -4,7 +4,7 @@ import Table from 'react-bootstrap/Table';
 import Form from 'react-bootstrap/Form';
 import "./main.css";
 import { Link } from 'react-router-dom';
-
+import Menu from '../../Components/Menu/Menu';
 
 // import "./main.css"
 import Container from 'react-bootstrap/Container';
@@ -21,6 +21,7 @@ function MainPage() {
 
   return (
     <Container>
+      <Menu></Menu>
       <div className="mainPage">
       <h1>Transparência Santa Casa de Misericórdia de Sobral</h1>
    
@@ -39,7 +40,7 @@ function MainPage() {
           </div>
 
           <div className="iconLink">
-            <Link to='/transparencia/at' style={{textDecoration:" none", textDecorationLine:"none"}}>
+            <Link to='/transparencia/atendimentos_unidade_internacao' style={{textDecoration:" none", textDecorationLine:"none"}}>
               <img src={undInt} alt="" srcset=""  />
               <p style={{textDecoration:" none", textDecorationLine:"none"}}>Situações por Unidades de Internação</p>
             </Link>

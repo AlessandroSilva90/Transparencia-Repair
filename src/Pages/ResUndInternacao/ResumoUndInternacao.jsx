@@ -8,7 +8,7 @@ import InputMask from 'react-input-mask';
 import Swal from 'sweetalert2'; 
 import {format} from "date-fns"
 import toDate from 'date-fns/toDate';
-
+import Menu from '../../Components/Menu/Menu';
 
 import Loader from '../../Components/Loading/Loading';
 import ErrorBoundary from '../../Components/ErrorBoundary/ErrorBoundary';
@@ -25,7 +25,7 @@ function ResumoUndInt() {
 
     e.preventDefault();
 
-    if(format(parseISO( dt_inicio), "MM-yyyy") > format(parseISO( dt_fim), "MM-yyyy")){
+    if(format(parseISO( dt_inicio), "yyyy") > format(parseISO( dt_fim), "yyyy")){
       Swal.fire({
         icon: 'error',
         title: 'Oops...',
@@ -69,6 +69,7 @@ function ResumoUndInt() {
 
   return (
     <Container>
+      <Menu></Menu>
       <div className="mainPage">
       <h1>Atendimentos por Unidade de Internação</h1>
       <Form className='forms' onSubmit={handleDados}>

@@ -14,7 +14,7 @@ import Container from 'react-bootstrap/Container';
 import InputMask from 'react-input-mask';
 import Paginator from '../../Components/Paginator/Paginator';
 import parseISO from 'date-fns/parseISO';
-
+import Menu from '../../Components/Menu/Menu';
 // import Menu from '../../Components/Menu/Menu.jsx';
 
 function Cirurgias() {
@@ -33,7 +33,7 @@ function Cirurgias() {
   const handleDados = async (e) => {
     e.preventDefault();
 
-    if(format(parseISO( dt_inicio), "MM-yyyy") > format(parseISO( dt_fim), "MM-yyyy")){
+    if(format(parseISO( dt_inicio), "yyyy") > format(parseISO( dt_fim), "yyyy")){
       Swal.fire({
         icon: 'error',
         title: 'Oops...',
@@ -107,6 +107,7 @@ function Cirurgias() {
 
   return (
     <Container>
+      <Menu></Menu>
       <div className="mainPage">
       <h1>Cirúrgias</h1>
 
