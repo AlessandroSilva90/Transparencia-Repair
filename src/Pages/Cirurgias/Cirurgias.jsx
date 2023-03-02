@@ -9,12 +9,13 @@ import { getCirurgiaTipo, getCirurgiaCidade, getCirurgiaFaixaEtaria, getCirurgia
 
 import Table from 'react-bootstrap/Table';
 import Form from 'react-bootstrap/Form';
-// import "./main.css"
+import "./main.css"
 import Container from 'react-bootstrap/Container';
 import InputMask from 'react-input-mask';
 import Paginator from '../../Components/Paginator/Paginator';
 import parseISO from 'date-fns/parseISO';
 import Menu from '../../Components/Menu/Menu';
+import TableComponent from '../../Components/Table/Table';
 // import Menu from '../../Components/Menu/Menu.jsx';
 
 function Cirurgias() {
@@ -26,13 +27,13 @@ function Cirurgias() {
   const [sexo,setDadosSexo] = useState(['']);
   const [cidade,setDadosCidade] = useState(['']);
   const [faixa_etaria,setDadosFaixaEtaria] = useState(['']);
+  const [isLoad,setIsLoad] = useState(false);
 
-  const [isLoad,setIsLoad] = useState(true);
-
+  const [isToggled, setIsToggled] = useState(false);
 
   const handleDados = async (e) => {
     e.preventDefault();
-
+    
     if(format(parseISO( dt_inicio), "yyyy") > format(parseISO( dt_fim), "yyyy")){
       Swal.fire({
         icon: 'error',
@@ -42,6 +43,7 @@ function Cirurgias() {
     }else{      
     try{
       setIsLoad(false)
+      setIsToggled(!isToggled)
       const responseTipo = await getCirurgiaTipo(format(parseISO( dt_inicio), "dd-MM-yyyy"),format(parseISO( dt_fim), "dd-MM-yyyy"));
       const responseSexo = await getCirurgiaSexo(format(parseISO( dt_inicio), "dd-MM-yyyy"),format(parseISO( dt_fim), "dd-MM-yyyy"));
       const responseCidade = await getCirurgiaCidade(format(parseISO( dt_inicio), "dd-MM-yyyy"),format(parseISO( dt_fim), "dd-MM-yyyy"));
@@ -62,7 +64,7 @@ function Cirurgias() {
       })
     }
   }
-
+  setIsToggled(false)
     setIsLoad(true);
   }
 
@@ -109,6 +111,7 @@ function Cirurgias() {
     <Container>
       <Menu></Menu>
       <div className="mainPage">
+
       <h1>Cirúrgias</h1>
 
       <Form className='forms' onSubmit={handleDados} >
@@ -128,20 +131,21 @@ function Cirurgias() {
         <div className="titleDiv">
           <p>Por Faixa Etária</p>
         </div>
-        <Table striped> 
-          <thead>
-            <tr>
-              <th>Idade</th>
-              <th>Quantidade</th>
-            </tr>
-            
-          </thead>
-          <tbody>
-            { isLoad ? faixa_etaria.map(returnFaixaEtaria) : <Loader/> }
-            {/* {faixa_etaria.map(returnFaixaEtaria)} */}
-          </tbody>
-        
-        </Table>
+        {isToggled ? <Loader/> :
+          <TableComponent striped> 
+            <thead>
+              <tr>
+                <th>Idade</th>
+                <th>Quantidade</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              { faixa_etaria.map(returnFaixaEtaria)}
+            </tbody>
+          
+          </TableComponent>
+}
       </div>
 
       <div className='qrsCards'>
@@ -157,9 +161,10 @@ function Cirurgias() {
             </tr>
             
           </thead>          
-          { isLoad ? <Paginator data={cidade}/> : <Loader/> }
-            {/* <Paginator data={cidade}/> */}
+          { <Paginator data={cidade}/>}
+            
         </Table>
+        {isToggled && <Loader/>}
       </div>
 
       <div className='qrsCards'>
@@ -175,13 +180,10 @@ function Cirurgias() {
             
           </thead>
           <tbody>
-          { isLoad ? sexo.map(returnSexo) : <Loader/> }
-            {/* {  sexo.map(returnSexo)} */}
-            
-
+            {sexo.map(returnSexo)}
           </tbody>
-        
         </Table>
+        {isToggled && <Loader/>}
       </div>
 
       <div className='qrsCards'>
@@ -198,12 +200,10 @@ function Cirurgias() {
             
           </thead>
           <tbody>
-          { isLoad ? tipo.map(returnTipo) : <Loader/> }
-            {/* {tipo.map(returnTipo)} */}
-
+            {tipo.map(returnTipo)}
           </tbody>
-        
         </Table>
+        {isToggled && <Loader/>}
       </div>
 
       

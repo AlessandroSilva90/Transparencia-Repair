@@ -14,12 +14,14 @@ import Loader from '../../Components/Loading/Loading';
 import ErrorBoundary from '../../Components/ErrorBoundary/ErrorBoundary';
 
 import parseISO from 'date-fns/parseISO';
+import TableComponent from '../../Components/Table/Table';
 function ResumoUndInt() {
 
   const [dt_inicio, setdtInicio] = useState("");
   const [dt_fim, setdtFim] = useState("");
   const [dados,setDados] = useState([''])
   const [isLoad,setIsLoad] = useState(true);
+  const [isToggled, setIsToggled] = useState(false);
 
   const handleDados = async (e) => {
 
@@ -34,6 +36,7 @@ function ResumoUndInt() {
     }else{
     try{
       setIsLoad(false)
+      setIsToggled(!isToggled)
       const response = await getResumoUnidadeInternacao(format(parseISO( dt_inicio), "dd-MM-yyyy"),format(parseISO( dt_fim), "dd-MM-yyyy"));
       setDados(response);
       setIsLoad(true)
@@ -45,7 +48,9 @@ function ResumoUndInt() {
         text: 'Verifique se as datas estão corretas!'
       })
     }
+    
   }
+    setIsToggled(false)
     setIsLoad(true)
   }
 
@@ -89,7 +94,9 @@ function ResumoUndInt() {
         <div className="titleDiv">
           <p>Pesquisa</p>
         </div>
-        <Table striped> 
+        {isToggled ? <Loader/> :
+          <TableComponent striped >
+        
           <thead>
             <tr>
             <th>Setor</th>
@@ -103,16 +110,13 @@ function ResumoUndInt() {
             <th>Taxa Mort Institucional</th>
             <th>Pacientes/Dia</th>
             </tr>
-            
           </thead>
           <tbody>
-            <ErrorBoundary>
-              {isLoad ? dados.map(returnDados): <Loader/> }
-            </ErrorBoundary>
-
+              { dados.map(returnDados) }
           </tbody>
         
-        </Table>
+        </TableComponent>
+        }
       </div>
   <div className="legendas">
     <div className="legTitle">

@@ -10,6 +10,7 @@ import {format} from "date-fns"
 import toDate from 'date-fns/toDate';
 import Menu from '../../Components/Menu/Menu';
 import Loader from '../../Components/Loading/Loading';
+import TableComponent from '../../Components/Table/Table';
 
 
 function AtendimentosPorCidade() {
@@ -19,9 +20,12 @@ function AtendimentosPorCidade() {
   const [dados,setDados] = useState(['']);
   const [isLoad,setIsLoad] = useState(true);
 
+  const [isToggled, setIsToggled] = useState(false);
+
+
   const handleDados = async (e) => {
       e.preventDefault();
-
+      // setIsToggled(!isToggled)
       if(format(parseISO( dt_inicio), "yyyy") > format(parseISO( dt_fim), "yyyy")){
         Swal.fire({
           icon: 'error',
@@ -31,15 +35,21 @@ function AtendimentosPorCidade() {
       }else{
       try{
         setIsLoad(false)
+        setIsToggled(!isToggled)
         const response = await getDadosPorCidade(format(parseISO( dt_inicio), "dd-MM-yyyy"),format(parseISO( dt_fim), "dd-MM-yyyy"))
         setDados(response)
         setIsLoad(true)
+        
       }catch (e){
         setIsLoad(false)
+        
       }
       setIsLoad(true)
+      setIsToggled(false)
     
       }
+
+      
   }
 
   const returnDados = (val , index) =>{
@@ -56,6 +66,7 @@ function AtendimentosPorCidade() {
     <Container>
       <Menu></Menu>
       <div className="mainPage">
+      
       <h1>Atendimentos por Cidade</h1>
       <Form className='forms' onSubmit={handleDados}>
         <div className="titleDiv">
@@ -74,19 +85,24 @@ function AtendimentosPorCidade() {
         <div className="titleDiv">
           <p>Pesquisa</p>
         </div>
-        <Table striped> 
-          <thead>
-            <th>Cidade</th>
-            <th>Quantidade</th>
-            <th>Porcentagem</th>
-          </thead>
-          <tbody>
-          { isLoad ? dados.map(returnDados) : <Loader/> }
-            {/* {dados.map(returnDados)} */}
-          </tbody>
+        {isToggled ? <Loader/> :
+          <TableComponent striped> 
         
-        </Table>
-      </div>
+          <thead>
+            <tr>
+              <th>Cidade</th>
+              <th>Quantidade</th>
+              <th>Porcentagem</th>
+            </tr>
+          </thead>
+
+          <tbody >
+            {dados.map(returnDados) }
+          </tbody>
+        </TableComponent>
+
+    }
+    </div>
     </div>
     </Container>
 
