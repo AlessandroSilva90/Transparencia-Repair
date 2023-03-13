@@ -36,3 +36,33 @@ export const getCirurgiaFaixaEtaria =  async (dt_inicio,dt_fim) => {
     const dados = await api.get(`cirurgias_faixa_etaria/dt_ini/${dt_inicio}/dt_fim/${dt_fim}`);   
     return dados.data;
 }
+
+
+// xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+// A PARTIR DAQUI SÃO AS NOVAS ROTAS PARA 
+// XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+
+export const getMetasInternacoes =  async (dt_inicio,dt_fim) => {
+    const dados = await api.get(`/metasInternacoes/${dt_inicio}/dt_fim/${dt_fim}`);   
+    return dados.data;
+}
+
+export const getMetasCirurgias =  async (dt_inicio,dt_fim) => {
+    const dados = await api.get(`/metasEletivas/${dt_inicio}/dt_fim/${dt_fim}`);   
+    return dados.data;
+}
+
+export const getMetasUrgencia =  async (dt_inicio,dt_fim) => {
+    const dados = await api.get(`/metasUrgencias/${dt_inicio}/dt_fim/${dt_fim}`);   
+    return dados.data;
+}
+
+export const getMetasConsultas =  async (dt_inicio,dt_fim) => {
+    const dados = await api.get(`/metasConsultas/${dt_inicio}/dt_fim/${dt_fim}`);   
+    return dados.data;
+}
+
+export const getMetasExames =  async (dt_inicio,dt_fim) => {
+    const dados = await api.get(`/metasLaboratorio/${dt_inicio}/dt_fim/${dt_fim}`);   
+    return dados.data;
+}
