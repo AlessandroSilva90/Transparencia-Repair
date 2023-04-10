@@ -40,8 +40,8 @@ const AppRouts = () => {
                     <Route exact path='transparencia/ContasPagas' element={<ContasPagas />} /> 
 
                     <Route exact path='transparencia/ContasPagas/Details/:cd_con_pag/:cd_pagcon_pag' element={<DetailPage />} /> 
-
-                    
+                    {/* <Route exact path='transparencia/ContasPagas/Details/:cd_con_pag/:cd_pagcon_pag' element={<DetailPage />} />  */}
+                
             </Routes>
                 
         </Router>
