@@ -24,7 +24,7 @@ const AppRouts = () => {
                 
             <Routes>
                     <Route exact path='/transparencia/assistenciais' element={<SecundaryMainPage/>} />
-                    <Route exact path='/transparencia' element={<IndexPage/>} />
+                    <Route exact path='/' element={<IndexPage/>} />
 
                     <Route exact path='transparencia/atendimentos_cidade' element={<AtendimentosPorCidade/>} />
                     <Route exact path='transparencia/atendimentos_unidade_internacao' element={<ResumoUndInt/>} />
