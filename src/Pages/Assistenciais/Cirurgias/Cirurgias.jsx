@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react'
-import Loader from '../../Components/Loading/Loading';
+import Loader from '../../../Components/Loading/Loading';
 import Swal from 'sweetalert2'; 
 import {format} from "date-fns"
-import toDate from 'date-fns/toDate';
+// import toDate from 'date-fns/toDate';
 // API
 import { getCirurgiaTipo, getCirurgiaCidade, getCirurgiaFaixaEtaria, getCirurgiaSexo } from '../../services/api';
 
@@ -11,11 +11,11 @@ import Table from 'react-bootstrap/Table';
 import Form from 'react-bootstrap/Form';
 import "./main.css"
 import Container from 'react-bootstrap/Container';
-import InputMask from 'react-input-mask';
-import Paginator from '../../Components/Paginator/Paginator';
+// import InputMask from 'react-input-mask';
+import Paginator from '../../../Components/Paginator/Paginator';
 import parseISO from 'date-fns/parseISO';
-import Menu from '../../Components/Menu/Menu';
-import TableComponent from '../../Components/Table/Table';
+import Menu from '../../../Components/Menu/Menu';
+import TableComponent from '../../../Components/Table/Table';
 // import Menu from '../../Components/Menu/Menu.jsx';
 
 function Cirurgias() {

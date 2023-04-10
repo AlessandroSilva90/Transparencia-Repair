@@ -66,3 +66,57 @@ export const getMetasExames =  async (dt_inicio,dt_fim) => {
     const dados = await api.get(`/metasLaboratorio/${dt_inicio}/dt_fim/${dt_fim}`);   
     return dados.data;
 }
+
+
+// xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+// A PARTIR DAQUI SÃO AS NOVAS ROTAS 2.0
+// XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+
+export const getMetaAtendUrg =  async (competencia) => {
+    const dados = await api.get(`/getMetaAtendUrg/${competencia}`);   
+    return dados.data;
+}
+
+export const getMetCirurgiaAmb =  async (competencia) => {
+    const dados = await api.get(`/getMetCirurgiaAmb/${competencia}`);   
+    return dados.data;
+}
+
+export const getTratamentoConservador =  async (competencia) => {
+    const dados = await api.get(`/getTratamentoConservador/${competencia}`);   
+    return dados.data;
+}
+
+export const getConsultas =  async (dt_ini, dt_fim) => {
+    const dados = await api.get(`/getConsultas/${dt_ini}/dt_fim/${dt_fim}`);   
+    return dados.data;
+}
+
+export const getExames =  async (dt_ini, dt_fim) => {
+    const dados = await api.get(`/getEXames/${dt_ini}/dt_fim/${dt_fim}`);   
+    return dados.data;
+}
+
+// xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+// A PARTIR DAQUI SÃO AS rotas DOS GASTOS
+// XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+
+export const getContasPagas =  async (dt_ini, dt_fim) => {
+    const dados = await api.get(`/ContasPagas/${dt_ini}/dt_fim/${dt_fim}`);   
+    return dados.data;
+}
+
+export const getContasPagasID =  async (cd_pagcon_pag) => {
+    const dados = await api.get(`/DetalhesContas/id/${cd_pagcon_pag}`);   
+    return dados.data;
+}
+
+export const getDetailsContas =  async (cd_con_pag) => {
+    const dados = await api.get(`/DetalhesContas/${cd_con_pag}`);   
+    return dados.data;
+}
+
+export const getDadosPorCnpj = async (cnpj) => {
+    const dados = await api.get(`/ContasPagas/cnpj/${cnpj}`);   
+    return dados.data;
+}

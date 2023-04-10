@@ -4,7 +4,7 @@ import Swal from 'sweetalert2';
 import {format} from "date-fns"
 import toDate from 'date-fns/toDate';
 // API
-import { getMetasExames } from '../../../services/api';
+import { getExames, getMetasExames } from '../../../services/api';
 
 import Table from 'react-bootstrap/Table';
 import Form from 'react-bootstrap/Form';
@@ -40,7 +40,7 @@ function MetasExames() {
     try{
       setIsLoad(false)
       setIsToggled(!isToggled)
-      const response = await getMetasExames(format(parseISO( dt_inicio), "dd-MM-yyyy"),format(parseISO( dt_fim), "dd-MM-yyyy"));
+      const response = await getExames(format(parseISO( dt_inicio), "dd-MM-yyyy"),format(parseISO( dt_fim), "dd-MM-yyyy"));
         
       setMetas(response);
       setIsLoad(true);
@@ -62,7 +62,7 @@ function MetasExames() {
     
     return(
       <tr key={index}>
-        <td>{val['ESPECIALID']}</td>
+        <td>{val['TIPO']}</td>
         <td>{val['QTD']}</td>
       </tr>
     )

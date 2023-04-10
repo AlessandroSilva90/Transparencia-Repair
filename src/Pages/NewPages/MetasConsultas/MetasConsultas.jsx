@@ -4,7 +4,7 @@ import Swal from 'sweetalert2';
 import {format} from "date-fns"
 import toDate from 'date-fns/toDate';
 // API
-import { getMetasConsultas } from '../../../services/api';
+import { getConsultas } from '../../../services/api';
 
 import Table from 'react-bootstrap/Table';
 import Form from 'react-bootstrap/Form';
@@ -40,7 +40,7 @@ function MetasConsultas() {
     try{
       setIsLoad(false)
       setIsToggled(!isToggled)
-      const response = await getMetasConsultas(format(parseISO( dt_inicio), "dd-MM-yyyy"),format(parseISO( dt_fim), "dd-MM-yyyy"));
+      const response = await getConsultas(format(parseISO( dt_inicio), "dd-MM-yyyy"),format(parseISO( dt_fim), "dd-MM-yyyy"));
         console.log(response)
       setMetas(response);
       setIsLoad(true);
@@ -55,14 +55,14 @@ function MetasConsultas() {
     }
   }
   setIsToggled(false)
-    setIsLoad(true);
+  setIsLoad(true);
   }
 
   const returnMetas = (val , index) =>{
     
     return(
       <tr key={index}>
-        <td>{val['ESPECIALID']}</td>
+        <td>{val['ESPECIALIDADE']}</td>
         <td>{val['QTD']}</td>
       </tr>
     )

@@ -3,18 +3,21 @@ import ReactDOM from 'react-dom';
 import ReactPaginate from 'react-paginate';
 // import reactPaginator from 'react-paginator';
 import "./main.css"
+// import DetailEyes from "../../images/eyes.png"
+import DetailPage from '../../Pages/DeatilPage/DetailPage';
 
+import DetailEyes from "../../images/eyes.png"
+import { Link } from 'react-router-dom';
 // Example items, to simulate fetching from another resources.
 
 export default function Paginator(props){
 
     const {data} = props;
-    const [currentItems, setCurrentItens] = useState([]);
+    
+    const [currentItems, setCurrentItens] = useState(['']);
     const [pageCount, setPageCount] = useState(0);
     const [itemOffset, setItemOffset] = useState(0);
-    const itemsPerPage = 6;
-    
-
+    const itemsPerPage =15;
 
     useEffect(()=> {
 
@@ -32,19 +35,20 @@ export default function Paginator(props){
   };
 
   const returnCidade = (val , index) =>{
-    
     return(
       <tr key={index}>
-        <td>{val['UF']}</td>
-        <td>{val['NM_CIDADE']}</td>
-        <td>{val['QTD']}</td>
-        {/* <td>{val[3]}</td>
-        <td>{val[4]}</td> */}
-        {/* <td>{val[5]}</td>
-        <td>{Math.round(val[6])}</td>
-        <td>{Math.round(val[7])}</td>
-        <td>{val[8]}</td>
-        <td>{val[9]}</td> */}
+        
+        {/* <td>{val['CD_CON_PAG']}</td> */}
+        <td>{val['NR_DOCUMENTO']}</td>
+        <td>{val['NM_FORNECEDOR']}</td>
+        <td>{val['DESCRICAO']}</td>
+        {/* <td>{val['PARCELA']}</td>
+        <td>{val['SETOR']}</td>
+      <td>{val['CONTACUSTO']}</td> */}
+      <td>{val['DT_PAGAMENTO']}</td>
+        <td>R$ {val['VL_PAGO']}</td>
+        
+        <td><Link to={`Details/${val['CD_CON_PAG']}/${val['CD_PAGCON_PAG']}`}><img src={DetailEyes} className='detail'/></Link></td>
       </tr>
     )
   }
@@ -53,7 +57,7 @@ export default function Paginator(props){
     <>
     <tbody>
       
-        {currentItems.map(returnCidade)}
+        {currentItems > [''] && currentItems.map(returnCidade) }
     </tbody>
 
     <div className="paginator">

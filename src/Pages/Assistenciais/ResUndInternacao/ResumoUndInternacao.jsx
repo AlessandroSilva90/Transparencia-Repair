@@ -1,20 +1,19 @@
 import { useEffect, useState } from 'react'
-import { getResumoUnidadeInternacao } from '../../services/api';
-import Table from 'react-bootstrap/Table';
+import { getResumoUnidadeInternacao } from '../../../services/api';
 import Form from 'react-bootstrap/Form';
 import "./main.css"
 import Container from 'react-bootstrap/Container';
-import InputMask from 'react-input-mask';
+// import InputMask from 'react-input-mask';
 import Swal from 'sweetalert2'; 
 import {format} from "date-fns"
-import toDate from 'date-fns/toDate';
-import Menu from '../../Components/Menu/Menu';
+// import toDate from 'date-fns/toDate';
+import Menu from '../../../Components/Menu/Menu';
 
-import Loader from '../../Components/Loading/Loading';
-import ErrorBoundary from '../../Components/ErrorBoundary/ErrorBoundary';
+import Loader from '../../../Components/Loading/Loading';
+
 
 import parseISO from 'date-fns/parseISO';
-import TableComponent from '../../Components/Table/Table';
+import TableComponent from '../../../Components/Table/Table';
 function ResumoUndInt() {
 
   const [dt_inicio, setdtInicio] = useState("");

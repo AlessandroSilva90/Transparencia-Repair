@@ -12,6 +12,8 @@ import Form from 'react-bootstrap/Form';
 import "./main.css"
 import Container from 'react-bootstrap/Container';
 
+import Months from '../../../Components/Months/Months';
+
 import parseISO from 'date-fns/parseISO';
 import Menu from '../../../Components/Menu/Menu';
 import TableComponent from '../../../Components/Table/Table';
@@ -58,9 +60,6 @@ function MetasInternacoes() {
     setIsLoad(true);
   }
 
-  
-
-  
   const returnMetas = (val , index) =>{
     
     return(

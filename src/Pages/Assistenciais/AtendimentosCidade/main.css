@@ -19,7 +19,56 @@
 }
 
 .inpText{
+    /* width: 100%; */
+    border: none;
+    border-bottom:1px solid black ;
+    outline: 0;
+    background-color: white;
+    box-shadow: 0px;
+    margin: 5px;
+    padding: 5px;
+    /* margin-top: 10px; */
+    
+}
+
+.fields{
     width: 100%;
+    display: flex;
+    justify-content: center;
+    /* flex-direction: column; */
+}
+
+.fieldsFin{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+.rowDate{
+    display: flex;
+}
+.rowLb{
+    width: 40%;
+    /* margin: 20px; */
+    padding-top : 20px;
+    margin-left: 5px;
+    /* display: flex; */
+    /* justify-content: center; */
+    flex-direction: row; 
+}
+
+.rowLb input{
+    width: 100%;
+    outline: 0;
+    border: none;
+    border-bottom: 1px solid black;
+}
+.itemFields{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+.itemFields select{
     border: none;
     border-bottom:1px solid black ;
     outline: 0;
@@ -28,12 +77,6 @@
     margin: 5px;
     padding: 5px;
     margin-top: 10px;
-    
-}
-
-.fields{
-    display: flex;
-    margin:10px;
 }
 .forms{
     width: 100%;
@@ -73,7 +116,7 @@
 }
 
 .tbodyClass{
-    
+    display: flex;
     width: 100%;
     position: relative;
     justify-content: center;
