@@ -41,7 +41,7 @@ function MetasConsultas() {
       setIsLoad(false)
       setIsToggled(!isToggled)
       const response = await getConsultas(format(parseISO( dt_inicio), "dd-MM-yyyy"),format(parseISO( dt_fim), "dd-MM-yyyy"));
-        console.log(response)
+        // console.log(response)
       setMetas(response);
       setIsLoad(true);
 

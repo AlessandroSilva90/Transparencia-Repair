@@ -54,7 +54,7 @@ function Cirurgias() {
       setDadosFaixaEtaria(responseFaixaEtaria);
       setDadosSexo(responseSexo);
       setIsLoad(true);
-      console.log(responseSexo)
+      // console.log(responseSexo)
       
     }catch (e) {
       setIsLoad(false);

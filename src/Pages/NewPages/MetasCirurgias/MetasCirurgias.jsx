@@ -40,7 +40,7 @@ function MetasCirurgias() {
       setIsLoad(false)
       setIsToggled(!isToggled)
       const response = await getMetasCirurgias(format(parseISO( dt_inicio), "dd-MM-yyyy"),format(parseISO( dt_fim), "dd-MM-yyyy"));
-        console.log(response)
+        // console.log(response)
       setMetas(response);
       setIsLoad(true);
 
