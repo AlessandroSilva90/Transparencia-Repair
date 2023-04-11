@@ -48,7 +48,7 @@ export default function Paginator(props){
       <td>{val['DT_PAGAMENTO']}</td>
         <td>R$ {val['VL_PAGO']}</td>
         
-        <td><Link target='_blank' to='transparencia/ContasPagas/Detalhes'><img src={DetailEyes} className='detail'/></Link></td>
+        <td><a href='http://10.10.10.5/transparencia/ContasPagas' ><img src={DetailEyes} className='detail'/></a></td>
       </tr>
     )
   }
