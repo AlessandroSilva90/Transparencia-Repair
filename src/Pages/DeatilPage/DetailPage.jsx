@@ -14,16 +14,17 @@ const DetailPage = () => {
     const [details, setDetails] = useState(['']);
     const [datas, setDatas] = useState(['']);
     const {cd_con_pag,cd_pagcon_pag} = useParams();
-    // let navigate = useNavigate();
+    let navigate = useNavigate();
 
        useEffect (() => {
         async function loadDatas(){
           const responsePagCon = await getContasPagasID(cd_pagcon_pag);
             setDetails(responsePagCon);
+            console.log("SO uma")
         //   const responseDetails =  await getDetailsContas(cd_con_pag)
         //     setDatas(responseDetails);
         } loadDatas();
-    },[]);
+    },[cd_con_pag]);
 
     const returnAllDetails = (val , index) =>{
         return(
@@ -46,7 +47,7 @@ const DetailPage = () => {
                 
                 <h1>Detalhes</h1>
                 <div className="buttonBack">
-                    {/* <button  onClick={() => navigate(-1)}>Voltar</button> */}
+                    <button  onClick={() => navigate(-1)}>Voltar</button>
                 </div>
 
                 {/* <div className="cardsDetalhes"> */}
