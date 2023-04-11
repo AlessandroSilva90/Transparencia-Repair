@@ -6,7 +6,6 @@ import "./main.css"
 import { getContasPagasID,  getDetailsContas } from "../../services/api";
 import { useState, useEffect } from "react";
 import DetailItensCard from "../../Components/DetailItensCard/DetailItensCard";
-
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 
@@ -42,40 +41,7 @@ const DetailPage = () => {
       
         <Container>
         <Menu></Menu>
-        {/* <div className="mainPage"> */}
-                
-                <h1>Detalhes</h1>
-                <div className="buttonBack">
-                    <button  onClick={() => navigate(-1)}>Voltar</button>
-                </div>
-
-                {/* <div className="cardsDetalhes"> */}
-                <Row>
-                    <Col sm>
-                        <div className='qrsCardsDetails'>
-                            <div className="titleDiv">
-                                Detalhes
-                            </div>
-                            {details.map(returnAllDetails)}
-                        </div>
-                    </Col>
-
-
-                    <Col sm>
-                    <div className='qrsCardsDetailsItens'>
-                        <div className="titleDiv">
-                            Itens
-                            {/* {console.log(datas)} */}
-                        </div>
-                            <DetailItensCard props={cd_con_pag}/>
-                    </div>
-                    </Col>
-                </Row>
-
-                {/* </div> */}
-               
-            
-        {/* </div> */}
+            opa
       </Container>
   
     );
