@@ -36,6 +36,7 @@ export default function Paginator(props){
 
   const returnCidade = (val , index) =>{
     return(
+      <>
       <tr key={index}>
         
         {/* <td>{val['CD_CON_PAG']}</td> */}
@@ -48,8 +49,9 @@ export default function Paginator(props){
       <td>{val['DT_PAGAMENTO']}</td>
         <td>R$ {val['VL_PAGO']}</td>
         
-        <a href='ContasPagas/Detalhes' ><img src={DetailEyes} className='detail'/></a>
       </tr>
+        <Link to={'Detalhes'}><img src={DetailEyes} className='detail'/></Link>
+      </>
     )
   }
 
