@@ -30,7 +30,7 @@ const DetailItensCard = (props) => {
             </ul>
             ))
             )
-        }
+         }
         }
 
     return (  

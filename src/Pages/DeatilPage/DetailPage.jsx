@@ -22,7 +22,6 @@ const DetailPage = () => {
             setDetails(responsePagCon);
         //   const responseDetails =  await getDetailsContas(cd_con_pag)
         //     setDatas(responseDetails);
-        console.log("doidin")
         } loadDatas();
     },[]);
 
@@ -51,27 +50,27 @@ const DetailPage = () => {
                 </div>
 
                 {/* <div className="cardsDetalhes"> */}
-                {/* <Row>
-                    <Col sm> */}
+                <Row>
+                    <Col sm>
                         <div className='qrsCardsDetails'>
                             <div className="titleDiv">
                                 Detalhes
                             </div>
                             {details.map(returnAllDetails)}
                         </div>
-                    {/* </Col> */}
+                    </Col>
 
 
-                    {/* <Col sm> */}
-                        <div className='qrsCardsDetailsItens'>
-                            <div className="titleDiv">
-                                Itens
-                                {/* {console.log(datas)} */}
-                            </div>
-                                {/* <DetailItensCard props={cd_con_pag}/> */}
+                    <Col sm>
+                    <div className='qrsCardsDetailsItens'>
+                        <div className="titleDiv">
+                            Itens
+                            {/* {console.log(datas)} */}
                         </div>
-                    {/* </Col>
-                </Row> */}
+                            <DetailItensCard props={cd_con_pag}/>
+                    </div>
+                    </Col>
+                </Row>
 
                 {/* </div> */}
                

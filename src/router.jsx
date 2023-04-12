@@ -24,26 +24,24 @@ const AppRouts = () => {
                 
             <Routes>
                     <Route exact path='/transparencia/assistenciais' element={<SecundaryMainPage/>} />
-                    <Route exact path='/' element={<IndexPage/>} />
-                    {/* <Route exact path='/ao' element={<DetailPage/>} /> */}
+                    <Route exact path='/transparencia' element={<IndexPage/>} />
 
-                    <Route exact path='/transparencia/atendimentos_cidade' element={<AtendimentosPorCidade/>} />
-                    <Route exact path='/transparencia/atendimentos_unidade_internacao' element={<ResumoUndInt/>} />
+                    <Route exact path='transparencia/atendimentos_cidade' element={<AtendimentosPorCidade/>} />
+                    <Route exact path='transparencia/atendimentos_unidade_internacao' element={<ResumoUndInt/>} />
 
                     {/* a partir daqui são as novas rotas */}
                     <Route exact path='/transparencia/Internacoes' element={<MetasInternacoes />} /> 
-                    <Route exact path='/transparencia/Cirurgias' element={<MetasCirurgias />} /> 
-                    <Route exact path='/transparencia/Ambulatorio' element={<MetasUrgencia />} /> 
-                    <Route exact path='/transparencia/Consultas' element={<MetasConsultas />} /> 
-                    <Route exact path='/transparencia/Exames' element={<MetasExames />} /> 
+                    <Route exact path='transparencia/Cirurgias' element={<MetasCirurgias />} /> 
+                    <Route exact path='transparencia/Ambulatorio' element={<MetasUrgencia />} /> 
+                    <Route exact path='transparencia/Consultas' element={<MetasConsultas />} /> 
+                    <Route exact path='transparencia/Exames' element={<MetasExames />} /> 
 
                     {/* Rotas Financeiro */}
-                    <Route exact path='transparencia/ContasPagas' element={<ContasPagas />} /> 
+                    <Route exact path='/transparencia/ContasPagas' element={<ContasPagas />} /> 
 
-                    {/* <Route exact path='transparencia/ContasPagas/Detalhes' element={<DetailPage />} />  */}
-                    {/* <Route exact path='transparencia/ContasPagas/Detalhes/:cd_con_pag/:cd_pagcon_pag' element={<DetailPage />} />  */}
+                    <Route exact path='/Detalhes/:cd_con_pag/:cd_pagcon_pag' element={<DetailPage />} /> 
 
-                
+                    
             </Routes>
                 
         </Router>
