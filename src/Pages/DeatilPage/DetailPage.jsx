@@ -51,27 +51,27 @@ const DetailPage = () => {
                 </div>
 
                 {/* <div className="cardsDetalhes"> */}
-                <Row>
-                    <Col sm>
+                {/* <Row>
+                    <Col sm> */}
                         <div className='qrsCardsDetails'>
                             <div className="titleDiv">
                                 Detalhes
                             </div>
                             {details.map(returnAllDetails)}
                         </div>
-                    </Col>
+                    {/* </Col> */}
 
 
-                    <Col sm>
-                    <div className='qrsCardsDetailsItens'>
-                        <div className="titleDiv">
-                            Itens
-                            {/* {console.log(datas)} */}
+                    {/* <Col sm> */}
+                        <div className='qrsCardsDetailsItens'>
+                            <div className="titleDiv">
+                                Itens
+                                {/* {console.log(datas)} */}
+                            </div>
+                                {/* <DetailItensCard props={cd_con_pag}/> */}
                         </div>
-                            {/* <DetailItensCard props={cd_con_pag}/> */}
-                    </div>
-                    </Col>
-                </Row>
+                    {/* </Col>
+                </Row> */}
 
                 {/* </div> */}
                
