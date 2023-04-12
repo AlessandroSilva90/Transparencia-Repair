@@ -30,13 +30,13 @@ function IndexPage() {
         <div className="rowIcones">
 
           <div className="iconLink">
-            <Link to='/teste/transparencia/assistenciais' style={{textDecoration:" none", textDecorationLine:"none"}}>
+            <Link to='/transparencia/assistenciais' style={{textDecoration:" none", textDecorationLine:"none"}}>
               <img src={imgAssistencial} alt="" srcset="" />
               <p>Assistenciais</p>
             </Link>
           </div>
           <div className="iconLink">
-            <Link to='/teste/transparencia/ContasPagas' style={{textDecoration:" none", textDecorationLine:"none"}}>
+            <Link to='/transparencia/ContasPagas' style={{textDecoration:" none", textDecorationLine:"none"}}>
               <img src={imgDespesas} alt="" srcset="" />
               <p>Despesas</p>
             </Link>
